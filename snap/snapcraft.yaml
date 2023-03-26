@@ -1,7 +1,7 @@
 name: keepassxc
 adopt-info: keepassxc
 grade: stable
-base: core20
+base: core22
 confinement: strict
 compression: lzo
 
@@ -9,21 +9,21 @@ apps:
   keepassxc:
     command: usr/bin/keepassxc
     common-id: org.keepassxc.KeePassXC.desktop
-    extensions: [kde-neon]
+    #extensions: [kde-neon]
     plugs: [home, unity7, network, network-bind, removable-media, raw-usb]
   cli:
     command: usr/bin/keepassxc-cli
-    extensions: [kde-neon]
+    #extensions: [kde-neon]
     plugs: [home, removable-media, raw-usb]
   proxy:
     command: usr/bin/keepassxc-proxy
-    extensions: [kde-neon]
+    #extensions: [kde-neon]
     plugs: [home]
     
 slots:
   session-dbus-interface:
     interface: dbus
-    name: org.keepassxc.KeePassXC.MainWindow
+    name: [org.keepassxc.KeePassXC.MainWindow, org.freedesktop.secrets]
     bus: session
 
 parts:
@@ -52,9 +52,10 @@ parts:
       - libxi-dev
       - libxtst-dev
       - asciidoctor
+      - kf5-5-104-qt-5-15-8-core22-sdk
     stage-packages:
       - dbus
-      - libbotan-2-12
+      - libbotan-2-19
       - libqrencode4
       - libusb-1.0-0
       - libreadline8
@@ -62,3 +63,4 @@ parts:
       - libminizip1
       - libxtst6
       - xclip
+      - kf5-5-104-qt-5-15-8-core22-sdk
